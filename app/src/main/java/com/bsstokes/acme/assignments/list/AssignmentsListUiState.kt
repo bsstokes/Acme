@@ -6,5 +6,5 @@ data class AssignmentsListUiState(
 
 data class AssignmentItem(
     val driverName: String,
-    val shippingAddress: String,
+    val shipmentAddress: String,
 )

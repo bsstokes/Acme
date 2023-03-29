@@ -1,6 +1,8 @@
 package com.bsstokes.acme.assignments.list
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
@@ -13,23 +15,14 @@ import com.bsstokes.acme.ui.LoadingView
 import com.bsstokes.acme.ui.SimpleUiState
 import com.bsstokes.acme.ui.content
 import com.bsstokes.acme.ui.theme.AcmeTheme
+import com.bsstokes.acme.ui.theme.Dimens
+import com.bsstokes.acme.ui.theme.Typography
 
 @Composable
 fun AssignmentsListScreen(
     modifier: Modifier = Modifier,
 ) {
-    val uiState = AssignmentsListUiState(
-        assignments = listOf(
-            AssignmentItem(
-                driverName = "Driver #1",
-                shippingAddress = "Address #1",
-            ),
-            AssignmentItem(
-                driverName = "Driver #2",
-                shippingAddress = "Address #2",
-            ),
-        )
-    ).content()
+    val uiState = FakeData.assignmentsListUiState.content()
 
     AssignmentsListScreen(
         uiState = uiState,
@@ -60,7 +53,14 @@ fun AssignmentsListScreen(
             .testTag(AssignmentsListScreenTags.content),
     ) {
         items(uiState.assignments) { assignmentItem ->
-            Text(assignmentItem.driverName)
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(Dimens.Padding.Base_100),
+            ) {
+                Text(assignmentItem.driverName)
+                Text(assignmentItem.shipmentAddress, style = Typography.caption)
+            }
         }
     }
 }
@@ -83,11 +83,11 @@ private fun PreviewAssignmentsListScreenContent() = AcmeTheme {
             assignments = listOf(
                 AssignmentItem(
                     driverName = "Driver #1",
-                    shippingAddress = "Address #1",
+                    shipmentAddress = "Address #1",
                 ),
                 AssignmentItem(
                     driverName = "Driver #2",
-                    shippingAddress = "Address #2",
+                    shipmentAddress = "Address #2",
                 ),
             ),
         ),

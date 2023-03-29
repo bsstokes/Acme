@@ -59,11 +59,11 @@ class AssignmentsListScreenKtTest {
             assignments = listOf(
                 AssignmentItem(
                     driverName = "Driver #1",
-                    shippingAddress = "Address #1",
+                    shipmentAddress = "Address #1",
                 ),
                 AssignmentItem(
                     driverName = "Driver #2",
-                    shippingAddress = "Address #2",
+                    shipmentAddress = "Address #2",
                 ),
             )
         )
