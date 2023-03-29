@@ -3,6 +3,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -56,10 +58,14 @@ dependencies {
     implementation(projects.appDomain)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.runtimeKtx)
+    implementation(libs.compose.material)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.toolingPreview)
-    implementation(libs.compose.material)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.androidCompiler)
 
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.testManifest)
@@ -68,4 +74,5 @@ dependencies {
     testImplementation(libs.compose.ui.test)
     testImplementation(libs.junit)
     testImplementation(libs.robolectric)
+    testImplementation(libs.turbine)
 }

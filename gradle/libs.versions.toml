@@ -1,11 +1,14 @@
 [versions]
 composeCompiler = "1.4.4"
 composeUi = "1.4.0"
+coroutines = "1.6.4"
+hilt = "2.45"
 
 [libraries]
 
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.7.0" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.9.0" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.0.0" }
 androidx-lifecycle-runtimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.6.1" }
 
 compose-material = { module = "androidx.compose.material:material", version = "1.4.0" }
@@ -16,5 +19,12 @@ compose-ui-testManifest = { module = "androidx.compose.ui:ui-test-manifest", ver
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "composeUi" }
 compose-ui-toolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "composeUi" }
 
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-androidCompiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+
 junit = { module = "junit:junit", version = "4.13.2" }
 robolectric = { module = "org.robolectric:robolectric", version = "4.9.2" }
+turbine = { module = "app.cash.turbine:turbine", version = "0.12.1" }
