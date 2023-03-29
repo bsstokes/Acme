@@ -31,7 +31,7 @@ fun AssignmentsListScreen(
     uiState.fold(
         isContent = { AssignmentsListScreen(uiState = it, modifier = modifier) },
         ifLoading = { LoadingView(modifier = modifier) },
-        ifError = {},
+        ifError = { ErrorView(modifier = modifier) },
     )
 }
 

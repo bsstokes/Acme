@@ -5,6 +5,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import com.bsstokes.acme.test.test
+import com.bsstokes.acme.ui.ErrorUiState
 import com.bsstokes.acme.ui.LoadingUiState
 import com.bsstokes.acme.ui.content
 import org.junit.Rule
@@ -18,7 +19,7 @@ class AssignmentsListScreenKtTest {
     @get:Rule val composeRule = createComposeRule()
 
     @Test
-    fun `top-level composable with Loading show loading view`() = composeRule.test {
+    fun `top-level composable with Loading shows loading view`() = composeRule.test {
         setContent {
             AssignmentsListScreen(
                 uiState = LoadingUiState,
@@ -29,7 +30,7 @@ class AssignmentsListScreenKtTest {
     }
 
     @Test
-    fun `top-level composable with Content show content view`() = composeRule.test {
+    fun `top-level composable with Content shows content view`() = composeRule.test {
         setContent {
             AssignmentsListScreen(
                 uiState = AssignmentsListUiState(title = "TITLE").content(),
@@ -37,6 +38,17 @@ class AssignmentsListScreenKtTest {
         }
 
         onNodeWithTag(AssignmentsListScreenTags.content).assertIsDisplayed()
+    }
+
+    @Test
+    fun `top-level composable with Error shows error view`() = composeRule.test {
+        setContent {
+            AssignmentsListScreen(
+                uiState = ErrorUiState,
+            )
+        }
+
+        onNodeWithTag(ErrorViewTags.error).assertIsDisplayed()
     }
 
     @Test
