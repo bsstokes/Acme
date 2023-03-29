@@ -58,10 +58,11 @@ dependencies {
     implementation(projects.appDomain)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.runtimeKtx)
+    implementation(libs.compose.material)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.toolingPreview)
-    implementation(libs.compose.material)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.androidCompiler)

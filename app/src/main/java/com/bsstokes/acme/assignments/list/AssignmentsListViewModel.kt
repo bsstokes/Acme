@@ -5,13 +5,16 @@ import androidx.lifecycle.viewModelScope
 import com.bsstokes.acme.ui.LoadingUiState
 import com.bsstokes.acme.ui.SimpleUiState
 import com.bsstokes.acme.ui.content
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
+import javax.inject.Inject
 
-class AssignmentsListViewModel : ViewModel() {
+@HiltViewModel
+class AssignmentsListViewModel @Inject constructor() : ViewModel() {
     val uiState: StateFlow<SimpleUiState<AssignmentsListUiState>> =
         flow<SimpleUiState<AssignmentsListUiState>> {
             delay(2_000L)

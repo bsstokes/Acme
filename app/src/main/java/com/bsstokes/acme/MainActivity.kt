@@ -7,10 +7,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.bsstokes.acme.assignments.list.AssignmentsListScreen
-import com.bsstokes.acme.assignments.list.AssignmentsListViewModel
 import com.bsstokes.acme.ui.theme.AcmeTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    AssignmentsListScreen(AssignmentsListViewModel())
+                    AssignmentsListScreen(viewModel = hiltViewModel())
                 }
             }
         }
