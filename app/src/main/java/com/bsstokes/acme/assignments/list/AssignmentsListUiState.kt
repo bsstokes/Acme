@@ -1,5 +1,10 @@
 package com.bsstokes.acme.assignments.list
 
 data class AssignmentsListUiState(
-    val title: String,
+    val assignments: List<AssignmentItem>,
+)
+
+data class AssignmentItem(
+    val driverName: String,
+    val shipmentAddress: String,
 )
