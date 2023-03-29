@@ -7,16 +7,31 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
+import com.bsstokes.acme.ui.SimpleUiState
+import com.bsstokes.acme.ui.content
 import com.bsstokes.acme.ui.theme.AcmeTheme
 
 @Composable
 fun AssignmentsListScreen(
     modifier: Modifier = Modifier,
 ) {
-    val uiState = AssignmentsListUiState(title = "Assignments")
+    val uiState = AssignmentsListUiState(title = "Assignments").content()
+
     AssignmentsListScreen(
         uiState = uiState,
         modifier = modifier,
+    )
+}
+
+@Composable
+fun AssignmentsListScreen(
+    uiState: SimpleUiState<AssignmentsListUiState>,
+    modifier: Modifier = Modifier,
+) {
+    uiState.fold(
+        isContent = { AssignmentsListScreen(uiState = it, modifier = modifier) },
+        ifLoading = { LoadingView(modifier = modifier) },
+        ifError = {},
     )
 }
 
