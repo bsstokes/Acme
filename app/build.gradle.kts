@@ -39,6 +39,12 @@ android {
         kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
 
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
+
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -60,4 +66,5 @@ dependencies {
     testImplementation(projects.testUtils)
     testImplementation(libs.compose.ui.test)
     testImplementation(libs.junit)
+    testImplementation(libs.robolectric)
 }
