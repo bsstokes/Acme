@@ -1,5 +1,9 @@
 package com.bsstokes.acme.assignments.list
 
+import com.bsstokes.acme.app.domain.model.Assignment
+import com.bsstokes.acme.app.domain.model.Driver
+import com.bsstokes.acme.app.domain.model.Shipment
+
 object FakeData {
     private val shipments = listOf(
         "215 Osinski Manors",
@@ -27,14 +31,14 @@ object FakeData {
         "Kaiser Sose",
     )
 
-    val assignmentsListUiState by lazy {
-        AssignmentsListUiState(
-            assignments = drivers.zip(shipments).map { (driverName, shipmentAddress) ->
-                AssignmentItem(
-                    driverName = driverName,
-                    shipmentAddress = shipmentAddress,
-                )
-            },
-        )
+    private val assignments by lazy {
+        drivers.zip(shipments).map { (driverName, shipmentAddress) ->
+            Assignment(
+                driver = Driver(name = driverName),
+                shipment = Shipment(address = shipmentAddress),
+            )
+        }
     }
+
+    val assignmentsListUiState by lazy { assignments.toUiState() }
 }
