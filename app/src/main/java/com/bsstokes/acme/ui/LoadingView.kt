@@ -1,4 +1,4 @@
-package com.bsstokes.acme.assignments.list
+package com.bsstokes.acme.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.CircularProgressIndicator

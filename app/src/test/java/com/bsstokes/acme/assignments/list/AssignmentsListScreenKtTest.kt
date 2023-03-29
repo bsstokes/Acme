@@ -8,6 +8,7 @@ import com.bsstokes.acme.test.test
 import com.bsstokes.acme.ui.ErrorUiState
 import com.bsstokes.acme.ui.ErrorViewTags
 import com.bsstokes.acme.ui.LoadingUiState
+import com.bsstokes.acme.ui.LoadingViewTags
 import com.bsstokes.acme.ui.content
 import org.junit.Rule
 import org.junit.Test
