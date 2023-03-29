@@ -3,6 +3,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -60,6 +62,9 @@ dependencies {
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.toolingPreview)
     implementation(libs.compose.material)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.androidCompiler)
 
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.testManifest)
