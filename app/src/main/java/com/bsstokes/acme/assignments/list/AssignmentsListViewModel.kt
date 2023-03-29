@@ -18,12 +18,11 @@ import javax.inject.Inject
 class AssignmentsListViewModel @Inject constructor(
     loadAssignmentsUseCase: LoadAssignmentsUseCase,
 ) : ViewModel() {
-    val uiState: StateFlow<SimpleUiState<AssignmentsListUiState>> =
-        flow<SimpleUiState<AssignmentsListUiState>> {
-            val uiState = loadAssignmentsUseCase.loadAssignments().fold(
-                ifSuccess = { it.toUiState().content() },
-                ifError = { ErrorUiState }
-            )
-            emit(uiState)
-        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), LoadingUiState)
+    val uiState: StateFlow<SimpleUiState<AssignmentsListUiState>> = flow {
+        val uiState = loadAssignmentsUseCase.loadAssignments().fold(
+            ifSuccess = { it.toUiState().content() },
+            ifError = { ErrorUiState }
+        )
+        emit(uiState)
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), LoadingUiState)
 }
