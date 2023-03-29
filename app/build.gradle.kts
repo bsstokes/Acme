@@ -57,6 +57,7 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.testManifest)
 
+    testImplementation(projects.testUtils)
     testImplementation(libs.compose.ui.test)
     testImplementation(libs.junit)
 }
