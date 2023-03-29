@@ -31,7 +31,7 @@ object FakeData {
         "Kaiser Sose",
     )
 
-    private val assignments by lazy {
+    val assignments by lazy {
         drivers.zip(shipments).map { (driverName, shipmentAddress) ->
             Assignment(
                 driver = Driver(name = driverName),
