@@ -6,6 +6,7 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import com.bsstokes.acme.test.test
 import com.bsstokes.acme.ui.ErrorUiState
+import com.bsstokes.acme.ui.ErrorViewTags
 import com.bsstokes.acme.ui.LoadingUiState
 import com.bsstokes.acme.ui.content
 import org.junit.Rule

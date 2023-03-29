@@ -8,6 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
+import com.bsstokes.acme.ui.ErrorView
 import com.bsstokes.acme.ui.SimpleUiState
 import com.bsstokes.acme.ui.content
 import com.bsstokes.acme.ui.theme.AcmeTheme
