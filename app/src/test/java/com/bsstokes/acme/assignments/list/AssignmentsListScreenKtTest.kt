@@ -35,7 +35,7 @@ class AssignmentsListScreenKtTest {
     fun `top-level composable with Content shows content view`() = composeRule.test {
         setContent {
             AssignmentsListScreen(
-                uiState = AssignmentsListUiState(title = "TITLE").content(),
+                uiState = AssignmentsListUiState(assignments = emptyList()).content(),
             )
         }
 
@@ -54,8 +54,19 @@ class AssignmentsListScreenKtTest {
     }
 
     @Test
-    fun `content shows title`() = composeRule.test {
-        val uiState = AssignmentsListUiState(title = "TITLE")
+    fun `content shows driver names`() = composeRule.test {
+        val uiState = AssignmentsListUiState(
+            assignments = listOf(
+                AssignmentItem(
+                    driverName = "Driver #1",
+                    shippingAddress = "Address #1",
+                ),
+                AssignmentItem(
+                    driverName = "Driver #2",
+                    shippingAddress = "Address #2",
+                ),
+            )
+        )
 
         setContent {
             AssignmentsListScreen(
@@ -63,6 +74,7 @@ class AssignmentsListScreenKtTest {
             )
         }
 
-        onNodeWithText("TITLE").assertIsDisplayed()
+        onNodeWithText("Driver #1").assertIsDisplayed()
+        onNodeWithText("Driver #2").assertIsDisplayed()
     }
 }

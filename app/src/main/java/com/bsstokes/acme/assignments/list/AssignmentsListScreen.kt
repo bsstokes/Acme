@@ -1,10 +1,10 @@
 package com.bsstokes.acme.assignments.list
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
@@ -18,7 +18,18 @@ import com.bsstokes.acme.ui.theme.AcmeTheme
 fun AssignmentsListScreen(
     modifier: Modifier = Modifier,
 ) {
-    val uiState = AssignmentsListUiState(title = "Assignments").content()
+    val uiState = AssignmentsListUiState(
+        assignments = listOf(
+            AssignmentItem(
+                driverName = "Driver #1",
+                shippingAddress = "Address #1",
+            ),
+            AssignmentItem(
+                driverName = "Driver #2",
+                shippingAddress = "Address #2",
+            ),
+        )
+    ).content()
 
     AssignmentsListScreen(
         uiState = uiState,
@@ -43,15 +54,14 @@ fun AssignmentsListScreen(
     uiState: AssignmentsListUiState,
     modifier: Modifier = Modifier,
 ) {
-    Box(
+    LazyColumn(
         modifier = modifier
             .fillMaxSize()
             .testTag(AssignmentsListScreenTags.content),
     ) {
-        Text(
-            text = uiState.title,
-            modifier = Modifier.align(Alignment.Center),
-        )
+        items(uiState.assignments) { assignmentItem ->
+            Text(assignmentItem.driverName)
+        }
     }
 }
 
@@ -69,6 +79,17 @@ private fun PreviewAssignmentsListScreen() = AcmeTheme {
 @Composable
 private fun PreviewAssignmentsListScreenContent() = AcmeTheme {
     AssignmentsListScreen(
-        uiState = AssignmentsListUiState(title = "Assignments"),
+        uiState = AssignmentsListUiState(
+            assignments = listOf(
+                AssignmentItem(
+                    driverName = "Driver #1",
+                    shippingAddress = "Address #1",
+                ),
+                AssignmentItem(
+                    driverName = "Driver #2",
+                    shippingAddress = "Address #2",
+                ),
+            ),
+        ),
     )
 }
