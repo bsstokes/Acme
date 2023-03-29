@@ -15,8 +15,15 @@ class AssignmentsListScreenKtTest {
     @get:Rule val composeRule = createComposeRule()
 
     @Test
-    fun `shows Assignments`() = composeRule.test {
-        setContent { AssignmentsListScreen() }
-        onNodeWithText("Assignments").assertIsDisplayed()
+    fun `content shows title`() = composeRule.test {
+        val uiState = AssignmentsListUiState(title = "TITLE")
+
+        setContent {
+            AssignmentsListScreen(
+                uiState = uiState,
+            )
+        }
+
+        onNodeWithText("TITLE").assertIsDisplayed()
     }
 }
