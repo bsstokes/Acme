@@ -40,14 +40,5 @@ object FakeData {
         }
     }
 
-    val assignmentsListUiState by lazy {
-        AssignmentsListUiState(
-            assignments = assignments.map { assignment ->
-                AssignmentItem(
-                    driverName = assignment.driver.name,
-                    shipmentAddress = assignment.shipment.address,
-                )
-            },
-        )
-    }
+    val assignmentsListUiState by lazy { assignments.toUiState() }
 }
