@@ -68,4 +68,5 @@ dependencies {
     testImplementation(libs.compose.ui.test)
     testImplementation(libs.junit)
     testImplementation(libs.robolectric)
+    testImplementation(libs.turbine)
 }
