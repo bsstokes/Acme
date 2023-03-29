@@ -7,22 +7,24 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.bsstokes.acme.ui.ErrorView
 import com.bsstokes.acme.ui.LoadingView
 import com.bsstokes.acme.ui.SimpleUiState
-import com.bsstokes.acme.ui.content
 import com.bsstokes.acme.ui.theme.AcmeTheme
 import com.bsstokes.acme.ui.theme.Dimens
 import com.bsstokes.acme.ui.theme.Typography
 
 @Composable
 fun AssignmentsListScreen(
+    viewModel: AssignmentsListViewModel,
     modifier: Modifier = Modifier,
 ) {
-    val uiState = FakeData.assignmentsListUiState.content()
+    val uiState by viewModel.uiState.collectAsState()
 
     AssignmentsListScreen(
         uiState = uiState,
@@ -67,12 +69,6 @@ fun AssignmentsListScreen(
 
 object AssignmentsListScreenTags {
     const val content = "AssignmentsListScreen.content"
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun PreviewAssignmentsListScreen() = AcmeTheme {
-    AssignmentsListScreen()
 }
 
 @Preview(showBackground = true)

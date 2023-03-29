@@ -8,6 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.bsstokes.acme.assignments.list.AssignmentsListScreen
+import com.bsstokes.acme.assignments.list.AssignmentsListViewModel
 import com.bsstokes.acme.ui.theme.AcmeTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    AssignmentsListScreen()
+                    AssignmentsListScreen(AssignmentsListViewModel())
                 }
             }
         }
