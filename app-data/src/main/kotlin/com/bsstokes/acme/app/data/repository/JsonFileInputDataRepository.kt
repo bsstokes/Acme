@@ -1,8 +1,6 @@
 package com.bsstokes.acme.app.data.repository
 
-import com.bsstokes.acme.app.domain.model.Driver
 import com.bsstokes.acme.app.domain.model.InputData
-import com.bsstokes.acme.app.domain.model.Shipment
 import com.bsstokes.acme.app.domain.repository.InputDataRepository
 import com.bsstokes.acme.app.domain.response.SimpleResponse
 import com.bsstokes.acme.app.domain.response.success
@@ -30,10 +28,7 @@ class JsonFileInputDataRepository(
                 Json.decodeFromStream<JsonData>(it)
             }
 
-            InputData(
-                drivers = jsonData.drivers.map { Driver(name = it) },
-                shipments = jsonData.shipments.map { Shipment(address = it) }
-            ).success()
+            jsonData.toInputData().success()
         }
     }
 }
