@@ -1,11 +1,7 @@
-package com.bsstokes.acme.app.domain.usecase
-
-import com.bsstokes.acme.app.domain.model.Assignment
-import com.bsstokes.acme.app.domain.model.Driver
-import com.bsstokes.acme.app.domain.model.Shipment
+package com.bsstokes.acme.app.domain.repository
 
 internal object FakeData {
-    private val shipments = listOf(
+    val shipments = listOf(
         "215 Osinski Manors",
         "9856 Marvin Stravenue",
         "7127 Kathlyn Ferry",
@@ -18,7 +14,7 @@ internal object FakeData {
         "79035 Shanna Light Apt. 322",
     )
 
-    private val drivers = listOf(
+    val drivers = listOf(
         "Everardo Welch",
         "Orval Mayert",
         "Howard Emmerich",
@@ -30,13 +26,4 @@ internal object FakeData {
         "Murphy Mosciski",
         "Kaiser Sose",
     )
-
-    val assignments by lazy {
-        drivers.zip(shipments).map { (driverName, shipmentAddress) ->
-            Assignment(
-                driver = Driver(name = driverName),
-                shipment = Shipment(address = shipmentAddress),
-            )
-        }
-    }
 }
