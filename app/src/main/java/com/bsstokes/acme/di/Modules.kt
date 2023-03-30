@@ -1,12 +1,16 @@
 package com.bsstokes.acme.di
 
-import com.bsstokes.acme.app.domain.repository.FakeInputDataRepository
+import android.content.Context
+import com.bsstokes.acme.app.data.repository.JsonFileInputDataRepository
+import com.bsstokes.acme.app.data.repository.JsonFileReader
 import com.bsstokes.acme.app.domain.repository.InputDataRepository
 import com.bsstokes.acme.app.domain.usecase.LoadAssignmentsFromRepositoryUseCase
 import com.bsstokes.acme.app.domain.usecase.LoadAssignmentsUseCase
+import com.bsstokes.acme.data.AndroidJsonFileReader
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 
 @Module
@@ -14,7 +18,18 @@ import dagger.hilt.components.SingletonComponent
 object SingletonModule {
 
     @Provides
-    fun inputDataRepository(): InputDataRepository = FakeInputDataRepository()
+    fun jsonFileReader(
+        @ApplicationContext context: Context,
+    ): JsonFileReader = AndroidJsonFileReader(
+        context = context,
+    )
+
+    @Provides
+    fun inputDataRepository(
+        jsonFileReader: JsonFileReader,
+    ): InputDataRepository = JsonFileInputDataRepository(
+        jsonFileReader = jsonFileReader,
+    )
 
     @Provides
     fun loadAssignmentsUseCase(
