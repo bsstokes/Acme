@@ -26,4 +26,22 @@ class MathKtTest {
         (-1).isEven shouldEqual false
         1_023.isEven shouldEqual false
     }
+
+    @Test
+    fun `determines prime factors`() {
+        0.primeFactors() shouldEqual emptySet()
+        2.primeFactors() shouldEqual setOf(2)
+        9.primeFactors() shouldEqual setOf(3)
+        13.primeFactors() shouldEqual setOf(13)
+        25.primeFactors() shouldEqual setOf(5)
+        36.primeFactors() shouldEqual setOf(2, 3)
+        210.primeFactors() shouldEqual setOf(2, 3, 5, 7)
+        (210 * 8).primeFactors() shouldEqual setOf(2, 3, 5, 7)
+
+        12.primeFactors() shouldEqual setOf(2, 3)
+        18.primeFactors() shouldEqual setOf(2, 3)
+        24.primeFactors() shouldEqual setOf(2, 3)
+        20.primeFactors() shouldEqual setOf(2, 5)
+        36.primeFactors() shouldEqual setOf(2, 3)
+    }
 }
