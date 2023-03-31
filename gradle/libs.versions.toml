@@ -33,5 +33,7 @@ mockk = { module = "io.mockk:mockk", version = "1.13.4" }
 robolectric = { module = "org.robolectric:robolectric", version = "4.9.2" }
 turbine = { module = "app.cash.turbine:turbine", version = "0.12.1" }
 
+kevinsternHungarianAlgorithm = { module = "com.github.kevinstern:software-and-algorithms", version = "1.0" }
+
 [plugins]
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
