@@ -20,3 +20,6 @@ internal fun Int.primeFactors(): Set<Int> {
 
     return primeFactors
 }
+
+internal fun haveCommonPrimeFactors(number1: Int, number2: Int): Boolean =
+    number1.primeFactors().intersect(number2.primeFactors()).any()

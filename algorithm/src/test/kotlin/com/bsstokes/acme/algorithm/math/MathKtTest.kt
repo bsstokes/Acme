@@ -1,5 +1,7 @@
 package com.bsstokes.acme.algorithm.math
 
+import com.bsstokes.acme.test.assertFalse
+import com.bsstokes.acme.test.assertTrue
 import com.bsstokes.acme.test.shouldEqual
 import org.junit.Test
 
@@ -28,7 +30,7 @@ class MathKtTest {
     }
 
     @Test
-    fun `determines prime factors`() {
+    fun `primeFactors() determines prime factors`() {
         0.primeFactors() shouldEqual emptySet()
         2.primeFactors() shouldEqual setOf(2)
         9.primeFactors() shouldEqual setOf(3)
@@ -43,5 +45,13 @@ class MathKtTest {
         24.primeFactors() shouldEqual setOf(2, 3)
         20.primeFactors() shouldEqual setOf(2, 5)
         36.primeFactors() shouldEqual setOf(2, 3)
+    }
+
+    @Test
+    fun `haveCommonPrimeFactors() determines if two numbers share prime factors`() {
+        haveCommonPrimeFactors(2, 4).assertTrue()
+        haveCommonPrimeFactors(4, 13).assertFalse()
+        haveCommonPrimeFactors(15, 21).assertTrue()
+        haveCommonPrimeFactors(15, 23).assertFalse()
     }
 }
