@@ -55,6 +55,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.algorithm)
     implementation(projects.appData)
     implementation(projects.appDomain)
 

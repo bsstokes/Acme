@@ -1,9 +1,9 @@
 package com.bsstokes.acme.di
 
 import android.content.Context
+import com.bsstokes.acme.algorithm.HungarianAssignmentAlgorithm
 import com.bsstokes.acme.app.data.repository.JsonFileInputDataRepository
 import com.bsstokes.acme.app.data.repository.JsonFileReader
-import com.bsstokes.acme.app.domain.algorithm.NaiveAssignmentAlgorithm
 import com.bsstokes.acme.app.domain.repository.InputDataRepository
 import com.bsstokes.acme.app.domain.usecase.LoadAssignmentsFromRepositoryUseCase
 import com.bsstokes.acme.app.domain.usecase.LoadAssignmentsUseCase
@@ -37,6 +37,6 @@ object SingletonModule {
         inputDataRepository: InputDataRepository,
     ): LoadAssignmentsUseCase = LoadAssignmentsFromRepositoryUseCase(
         inputDataRepository = inputDataRepository,
-        assignmentAlgorithm = NaiveAssignmentAlgorithm(),
+        assignmentAlgorithm = HungarianAssignmentAlgorithm(),
     )
 }
