@@ -10,11 +10,6 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
-import java.io.InputStream
-
-fun interface JsonFileReader {
-    fun readJsonFile(): InputStream
-}
 
 class JsonFileInputDataRepository(
     private val jsonFileReader: JsonFileReader,
