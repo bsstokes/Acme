@@ -20,6 +20,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Acme"
 include("app")
+include("algorithm")
 include("app-data")
 include("app-domain")
 include("test-utils")
