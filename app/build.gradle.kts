@@ -55,7 +55,9 @@ android {
 }
 
 dependencies {
+    implementation(projects.appData)
     implementation(projects.appDomain)
+
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.hilt.navigation.compose)
