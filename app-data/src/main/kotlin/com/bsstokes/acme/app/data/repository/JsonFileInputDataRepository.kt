@@ -2,6 +2,7 @@ package com.bsstokes.acme.app.data.repository
 
 import com.bsstokes.acme.app.domain.model.InputData
 import com.bsstokes.acme.app.domain.repository.InputDataRepository
+import com.bsstokes.acme.app.domain.response.ErrorResponse
 import com.bsstokes.acme.app.domain.response.SimpleResponse
 import com.bsstokes.acme.app.domain.response.success
 import kotlinx.coroutines.CoroutineDispatcher
@@ -19,11 +20,16 @@ class JsonFileInputDataRepository(
     @OptIn(ExperimentalSerializationApi::class)
     override suspend fun getInputData(): SimpleResponse<InputData> {
         return withContext(ioDispatcher) {
-            val jsonData = jsonFileReader.readJsonFile().use {
-                Json.decodeFromStream<JsonData>(it)
-            }
+            runCatching {
+                val jsonData = jsonFileReader.readJsonFile().use {
+                    Json.decodeFromStream<JsonData>(it)
+                }
 
-            jsonData.toInputData().success()
+                jsonData.toInputData().success()
+            }.fold(
+                onSuccess = { it },
+                onFailure = { ErrorResponse },
+            )
         }
     }
 }
