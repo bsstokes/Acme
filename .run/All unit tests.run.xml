@@ -13,6 +13,7 @@
           <option value=":app:testDebugUnitTest" />
           <option value=":app-domain:test" />
           <option value=":app-data:test" />
+          <option value=":algorithm:test" />
         </list>
       </option>
       <option name="vmOptions" />
