@@ -1,5 +1,6 @@
 package com.bsstokes.acme.algorithm
 
+import com.bsstokes.acme.algorithm.math.haveCommonPrimeFactors
 import com.bsstokes.acme.algorithm.math.isEven
 import com.bsstokes.acme.algorithm.words.numberOfConsonants
 import com.bsstokes.acme.algorithm.words.numberOfVowels
@@ -24,5 +25,11 @@ internal fun suitabilityScore(
         1.0 * driverName.numberOfConsonants
     }
 
-    return base
+    val modifier = if (haveCommonPrimeFactors(shipmentAddress.length, driverName.length)) {
+        1.5
+    } else {
+        1.0
+    }
+
+    return base * modifier
 }
