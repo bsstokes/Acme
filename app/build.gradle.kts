@@ -76,6 +76,7 @@ dependencies {
     testImplementation(projects.testUtils)
     testImplementation(libs.compose.ui.test)
     testImplementation(libs.junit)
+    testImplementation(libs.mockk)
     testImplementation(libs.robolectric)
     testImplementation(libs.turbine)
 }

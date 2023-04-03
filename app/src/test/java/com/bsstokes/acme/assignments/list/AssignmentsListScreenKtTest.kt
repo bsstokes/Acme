@@ -5,13 +5,17 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import com.bsstokes.acme.test.shouldEqual
 import com.bsstokes.acme.test.test
 import com.bsstokes.acme.ui.ErrorUiState
 import com.bsstokes.acme.ui.ErrorViewTags
 import com.bsstokes.acme.ui.LoadingUiState
 import com.bsstokes.acme.ui.LoadingViewTags
 import com.bsstokes.acme.ui.content
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.spyk
+import io.mockk.verify
+import kotlinx.coroutines.flow.MutableStateFlow
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -23,10 +27,31 @@ class AssignmentsListScreenKtTest {
     @get:Rule val composeRule = createComposeRule()
 
     @Test
+    fun `clicking on item calls top-level callback`() = composeRule.test {
+        val viewModel: AssignmentsListViewModel = mockk {
+            every { uiState } returns MutableStateFlow(
+                AssignmentsListUiState(assignments = assignmentItems()).content()
+            )
+        }
+        val navigateToAssignment: (String, String) -> Unit = spyk()
+
+        setContent {
+            AssignmentsListScreen(
+                viewModel = viewModel,
+                navigateToAssignment = navigateToAssignment,
+            )
+        }
+
+        onNodeWithText("Driver #2").assertIsDisplayed().performClick()
+        verify { navigateToAssignment("Driver #2", "Address #2") }
+    }
+
+    @Test
     fun `top-level composable with Loading shows loading view`() = composeRule.test {
         setContent {
             AssignmentsListScreen(
                 uiState = LoadingUiState,
+                onSelectAssignment = { _, _ -> },
             )
         }
 
@@ -38,6 +63,7 @@ class AssignmentsListScreenKtTest {
         setContent {
             AssignmentsListScreen(
                 uiState = AssignmentsListUiState(assignments = emptyList()).content(),
+                onSelectAssignment = { _, _ -> },
             )
         }
 
@@ -49,6 +75,7 @@ class AssignmentsListScreenKtTest {
         setContent {
             AssignmentsListScreen(
                 uiState = ErrorUiState,
+                onSelectAssignment = { _, _ -> },
             )
         }
 
@@ -58,16 +85,7 @@ class AssignmentsListScreenKtTest {
     @Test
     fun `content shows driver names`() = composeRule.test {
         val uiState = AssignmentsListUiState(
-            assignments = listOf(
-                AssignmentItem(
-                    driverName = "Driver #1",
-                    shipmentAddress = "Address #1",
-                ),
-                AssignmentItem(
-                    driverName = "Driver #2",
-                    shipmentAddress = "Address #2",
-                ),
-            )
+            assignments = assignmentItems(),
         )
 
         setContent {
@@ -83,31 +101,31 @@ class AssignmentsListScreenKtTest {
 
     @Test
     fun `clicking on item calls callback`() = composeRule.test {
-        var callbackCalledWithData: Pair<String, String>? = null
+        val callback: (String, String) -> Unit = spyk()
 
         val uiState = AssignmentsListUiState(
-            assignments = listOf(
-                AssignmentItem(
-                    driverName = "Driver #1",
-                    shipmentAddress = "Address #1",
-                ),
-                AssignmentItem(
-                    driverName = "Driver #2",
-                    shipmentAddress = "Address #2",
-                ),
-            )
+            assignments = assignmentItems(),
         )
 
         setContent {
             AssignmentsListScreen(
                 uiState = uiState,
-                onSelectAssignment = { driverName, shipmentAddress ->
-                    callbackCalledWithData = driverName to shipmentAddress
-                },
+                onSelectAssignment = callback,
             )
         }
 
         onNodeWithText("Driver #2").assertIsDisplayed().performClick()
-        callbackCalledWithData shouldEqual ("Driver #2" to "Address #2")
+        verify { callback("Driver #2", "Address #2") }
     }
+
+    private fun assignmentItems() = listOf(
+        AssignmentItem(
+            driverName = "Driver #1",
+            shipmentAddress = "Address #1",
+        ),
+        AssignmentItem(
+            driverName = "Driver #2",
+            shipmentAddress = "Address #2",
+        ),
+    )
 }

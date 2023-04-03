@@ -24,12 +24,14 @@ import com.bsstokes.acme.ui.theme.Typography
 @Composable
 fun AssignmentsListScreen(
     viewModel: AssignmentsListViewModel,
+    navigateToAssignment: (driverName: String, shipmentAddress: String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
     AssignmentsListScreen(
         uiState = uiState,
+        onSelectAssignment = navigateToAssignment,
         modifier = modifier,
     )
 }
@@ -37,6 +39,7 @@ fun AssignmentsListScreen(
 @Composable
 fun AssignmentsListScreen(
     uiState: SimpleUiState<AssignmentsListUiState>,
+    onSelectAssignment: (driverName: String, shipmentAddress: String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     uiState.fold(
@@ -44,7 +47,7 @@ fun AssignmentsListScreen(
             AssignmentsListScreen(
                 uiState = it,
                 modifier = modifier,
-                onSelectAssignment = { _, _ -> },
+                onSelectAssignment = onSelectAssignment,
             )
         },
         ifLoading = { LoadingView(modifier = modifier) },
