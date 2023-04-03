@@ -56,7 +56,7 @@ android {
 
 dependencies {
     implementation(projects.algorithm)
-    implementation(projects.appData)
+    implementation(projects.data)
     implementation(projects.domain)
 
     implementation(libs.androidx.activity.compose)
