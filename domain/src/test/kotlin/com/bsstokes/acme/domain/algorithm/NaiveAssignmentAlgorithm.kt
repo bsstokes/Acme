@@ -1,6 +1,5 @@
-package com.bsstokes.acme.app.domain.algorithm
+package com.bsstokes.acme.domain.algorithm
 
-import com.bsstokes.acme.domain.algorithm.AssignmentAlgorithm
 import com.bsstokes.acme.domain.model.Assignment
 import com.bsstokes.acme.domain.model.Driver
 import com.bsstokes.acme.domain.model.Shipment

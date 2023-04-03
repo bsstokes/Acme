@@ -53,7 +53,7 @@ fun <VALUE, ERROR> VALUE?.successOrElse(error: Response<Nothing, ERROR>): Respon
 
 /**
  * Returns [error] if the receiver is null, and returns the result of [success] otherwise. This
- * version calls [com.bsstokes.acme.app.domain.response.error] to convert [error] into a [Response].
+ * version calls [com.bsstokes.acme.domain.response.error] to convert [error] into a [Response].
  */
 fun <VALUE, ERROR> VALUE?.successOrElse(error: ERROR): Response<VALUE, ERROR> =
     this?.success() ?: error.error()
