@@ -4,6 +4,8 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
+import com.bsstokes.acme.test.shouldEqual
 import com.bsstokes.acme.test.test
 import com.bsstokes.acme.ui.ErrorUiState
 import com.bsstokes.acme.ui.ErrorViewTags
@@ -71,10 +73,41 @@ class AssignmentsListScreenKtTest {
         setContent {
             AssignmentsListScreen(
                 uiState = uiState,
+                onSelectAssignment = { _, _ -> }
             )
         }
 
         onNodeWithText("Driver #1").assertIsDisplayed()
         onNodeWithText("Driver #2").assertIsDisplayed()
+    }
+
+    @Test
+    fun `clicking on item calls callback`() = composeRule.test {
+        var callbackCalledWithData: Pair<String, String>? = null
+
+        val uiState = AssignmentsListUiState(
+            assignments = listOf(
+                AssignmentItem(
+                    driverName = "Driver #1",
+                    shipmentAddress = "Address #1",
+                ),
+                AssignmentItem(
+                    driverName = "Driver #2",
+                    shipmentAddress = "Address #2",
+                ),
+            )
+        )
+
+        setContent {
+            AssignmentsListScreen(
+                uiState = uiState,
+                onSelectAssignment = { driverName, shipmentAddress ->
+                    callbackCalledWithData = driverName to shipmentAddress
+                },
+            )
+        }
+
+        onNodeWithText("Driver #2").assertIsDisplayed().performClick()
+        callbackCalledWithData shouldEqual ("Driver #2" to "Address #2")
     }
 }

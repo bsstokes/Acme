@@ -1,5 +1,6 @@
 package com.bsstokes.acme.assignments.list
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -9,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,7 +40,13 @@ fun AssignmentsListScreen(
     modifier: Modifier = Modifier,
 ) {
     uiState.fold(
-        isContent = { AssignmentsListScreen(uiState = it, modifier = modifier) },
+        isContent = {
+            AssignmentsListScreen(
+                uiState = it,
+                modifier = modifier,
+                onSelectAssignment = { _, _ -> },
+            )
+        },
         ifLoading = { LoadingView(modifier = modifier) },
         ifError = { ErrorView(modifier = modifier) },
     )
@@ -47,6 +55,7 @@ fun AssignmentsListScreen(
 @Composable
 fun AssignmentsListScreen(
     uiState: AssignmentsListUiState,
+    onSelectAssignment: (driverName: String, shipmentAddress: String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
@@ -55,9 +64,15 @@ fun AssignmentsListScreen(
             .testTag(AssignmentsListScreenTags.content),
     ) {
         items(uiState.assignments) { assignmentItem ->
+            // Remember lambda so it doesn't cause recomposition
+            val callback = remember(assignmentItem) {
+                { onSelectAssignment(assignmentItem.driverName, assignmentItem.shipmentAddress) }
+            }
+
             Column(
                 modifier = Modifier
                     .fillMaxSize()
+                    .clickable(onClick = callback)
                     .padding(Dimens.Padding.Base_100),
             ) {
                 Text(assignmentItem.driverName)
@@ -87,5 +102,6 @@ private fun PreviewAssignmentsListScreenContent() = AcmeTheme {
                 ),
             ),
         ),
+        onSelectAssignment = { _, _ -> },
     )
 }
