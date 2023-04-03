@@ -57,7 +57,7 @@ android {
 dependencies {
     implementation(projects.algorithm)
     implementation(projects.appData)
-    implementation(projects.appDomain)
+    implementation(projects.domain)
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
