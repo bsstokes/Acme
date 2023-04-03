@@ -8,6 +8,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.bsstokes.acme.assignments.details.AssignmentDetailsScreen
 import com.bsstokes.acme.assignments.list.AssignmentsListScreen
 import com.bsstokes.acme.ui.theme.AcmeTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +26,31 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    AssignmentsListScreen(viewModel = hiltViewModel())
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = "list",
+                    ) {
+                        composable("list") {
+                            AssignmentsListScreen(
+                                viewModel = hiltViewModel(),
+                                navigateToAssignment = { driverName, shipmentAddress ->
+                                    navController.navigate(
+                                        "details?driver=$driverName&shipment=$shipmentAddress",
+                                    )
+                                },
+                            )
+                        }
+
+                        composable("details?driver={driver}&shipment={shipment}") { backStackEntry ->
+                            val driverName = backStackEntry.arguments!!.getString("driver")!!
+                            val shipmentAddress = backStackEntry.arguments!!.getString("shipment")!!
+                            AssignmentDetailsScreen(
+                                driverName = driverName,
+                                shipmentAddress = shipmentAddress,
+                            )
+                        }
+                    }
                 }
             }
         }
