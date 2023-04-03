@@ -2,9 +2,9 @@ package com.bsstokes.acme.di
 
 import android.content.Context
 import com.bsstokes.acme.algorithm.HungarianAssignmentAlgorithm
-import com.bsstokes.acme.app.data.repository.JsonFileInputDataRepository
-import com.bsstokes.acme.app.data.repository.JsonFileReader
 import com.bsstokes.acme.data.AndroidJsonFileReader
+import com.bsstokes.acme.data.repository.JsonFileInputDataRepository
+import com.bsstokes.acme.data.repository.JsonFileReader
 import com.bsstokes.acme.domain.repository.InputDataRepository
 import com.bsstokes.acme.domain.usecase.LoadAssignmentsFromRepositoryUseCase
 import com.bsstokes.acme.domain.usecase.LoadAssignmentsUseCase
