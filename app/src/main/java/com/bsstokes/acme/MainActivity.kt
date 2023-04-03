@@ -1,12 +1,13 @@
 package com.bsstokes.acme
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
@@ -35,9 +36,20 @@ class MainActivity : ComponentActivity() {
                             AssignmentsListScreen(
                                 viewModel = hiltViewModel(),
                                 navigateToAssignment = { driverName, shipmentAddress ->
-                                    Log.d("TEST", "Navigate to $driverName → $shipmentAddress")
+                                    navController.navigate(
+                                        "details?driver=$driverName&shipment=$shipmentAddress",
+                                    )
                                 },
                             )
+                        }
+
+                        composable("details?driver={driver}&shipment={shipment}") { backStackEntry ->
+                            val driverName = backStackEntry.arguments!!.getString("driver")!!
+                            val shipmentAddress = backStackEntry.arguments!!.getString("shipment")!!
+                            Column {
+                                Text(driverName)
+                                Text(shipmentAddress)
+                            }
                         }
                     }
                 }
