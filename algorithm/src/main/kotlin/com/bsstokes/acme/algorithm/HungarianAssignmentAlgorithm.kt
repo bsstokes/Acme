@@ -1,12 +1,12 @@
 package com.bsstokes.acme.algorithm
 
 import com.bsstokes.acme.algorithm.hungarian.assignViaHungarianAlgorithm
-import com.bsstokes.acme.app.domain.algorithm.AssignmentAlgorithm
-import com.bsstokes.acme.app.domain.model.Assignment
-import com.bsstokes.acme.app.domain.model.Driver
-import com.bsstokes.acme.app.domain.model.Shipment
-import com.bsstokes.acme.app.domain.response.SimpleResponse
-import com.bsstokes.acme.app.domain.response.success
+import com.bsstokes.acme.domain.algorithm.AssignmentAlgorithm
+import com.bsstokes.acme.domain.model.Assignment
+import com.bsstokes.acme.domain.model.Driver
+import com.bsstokes.acme.domain.model.Shipment
+import com.bsstokes.acme.domain.response.SimpleResponse
+import com.bsstokes.acme.domain.response.success
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

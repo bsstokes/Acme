@@ -11,7 +11,7 @@
       <option name="taskNames">
         <list>
           <option value=":app:testDebugUnitTest" />
-          <option value=":app-domain:test" />
+          <option value=":domain:test" />
           <option value=":app-data:test" />
           <option value=":algorithm:test" />
         </list>

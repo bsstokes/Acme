@@ -1,9 +1,9 @@
 package com.bsstokes.acme.algorithm
 
-import com.bsstokes.acme.app.domain.model.Assignment
-import com.bsstokes.acme.app.domain.model.Driver
-import com.bsstokes.acme.app.domain.model.Shipment
-import com.bsstokes.acme.app.domain.response.success
+import com.bsstokes.acme.domain.model.Assignment
+import com.bsstokes.acme.domain.model.Driver
+import com.bsstokes.acme.domain.model.Shipment
+import com.bsstokes.acme.domain.response.success
 import com.bsstokes.acme.test.shouldEqual
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher

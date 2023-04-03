@@ -4,10 +4,10 @@ import android.content.Context
 import com.bsstokes.acme.algorithm.HungarianAssignmentAlgorithm
 import com.bsstokes.acme.app.data.repository.JsonFileInputDataRepository
 import com.bsstokes.acme.app.data.repository.JsonFileReader
-import com.bsstokes.acme.app.domain.repository.InputDataRepository
-import com.bsstokes.acme.app.domain.usecase.LoadAssignmentsFromRepositoryUseCase
-import com.bsstokes.acme.app.domain.usecase.LoadAssignmentsUseCase
 import com.bsstokes.acme.data.AndroidJsonFileReader
+import com.bsstokes.acme.domain.repository.InputDataRepository
+import com.bsstokes.acme.domain.usecase.LoadAssignmentsFromRepositoryUseCase
+import com.bsstokes.acme.domain.usecase.LoadAssignmentsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
