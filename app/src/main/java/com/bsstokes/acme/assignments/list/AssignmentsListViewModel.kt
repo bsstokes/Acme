@@ -2,7 +2,7 @@ package com.bsstokes.acme.assignments.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bsstokes.acme.app.domain.usecase.LoadAssignmentsUseCase
+import com.bsstokes.acme.domain.usecase.LoadAssignmentsUseCase
 import com.bsstokes.acme.ui.ErrorUiState
 import com.bsstokes.acme.ui.LoadingUiState
 import com.bsstokes.acme.ui.SimpleUiState

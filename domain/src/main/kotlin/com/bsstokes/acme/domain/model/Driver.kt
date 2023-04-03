@@ -1,4 +1,4 @@
-package com.bsstokes.acme.app.domain.model
+package com.bsstokes.acme.domain.model
 
 data class Driver(
     val name: String,

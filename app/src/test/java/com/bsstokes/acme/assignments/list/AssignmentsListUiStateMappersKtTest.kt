@@ -1,8 +1,8 @@
 package com.bsstokes.acme.assignments.list
 
-import com.bsstokes.acme.app.domain.model.Assignment
-import com.bsstokes.acme.app.domain.model.Driver
-import com.bsstokes.acme.app.domain.model.Shipment
+import com.bsstokes.acme.domain.model.Assignment
+import com.bsstokes.acme.domain.model.Driver
+import com.bsstokes.acme.domain.model.Shipment
 import com.bsstokes.acme.test.shouldEqual
 import org.junit.Test
 

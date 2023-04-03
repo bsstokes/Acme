@@ -1,4 +1,4 @@
-package com.bsstokes.acme.app.domain.response
+package com.bsstokes.acme.domain.response
 
 val SuccessResponse = Unit.success()
 val ErrorResponse = Unit.error()

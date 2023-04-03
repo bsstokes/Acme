@@ -1,9 +1,9 @@
 package com.bsstokes.acme.algorithm.hungarian
 
 import blogspot.software_and_algorithms.stern_library.optimization.HungarianAlgorithm
-import com.bsstokes.acme.app.domain.model.Assignment
-import com.bsstokes.acme.app.domain.model.Driver
-import com.bsstokes.acme.app.domain.model.Shipment
+import com.bsstokes.acme.domain.model.Assignment
+import com.bsstokes.acme.domain.model.Driver
+import com.bsstokes.acme.domain.model.Shipment
 
 internal fun assignViaHungarianAlgorithm(
     drivers: List<Driver>,

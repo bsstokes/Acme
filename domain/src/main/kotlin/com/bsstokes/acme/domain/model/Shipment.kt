@@ -1,4 +1,4 @@
-package com.bsstokes.acme.app.domain.model
+package com.bsstokes.acme.domain.model
 
 data class Shipment(
     val address: String,

@@ -1,4 +1,4 @@
-package com.bsstokes.acme.app.domain.model
+package com.bsstokes.acme.domain.model
 
 data class InputData(
     val drivers: List<Driver>,

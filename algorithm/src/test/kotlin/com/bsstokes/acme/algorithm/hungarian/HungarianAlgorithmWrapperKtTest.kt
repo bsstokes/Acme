@@ -1,7 +1,7 @@
 package com.bsstokes.acme.algorithm.hungarian
 
-import com.bsstokes.acme.app.domain.model.Driver
-import com.bsstokes.acme.app.domain.model.Shipment
+import com.bsstokes.acme.domain.model.Driver
+import com.bsstokes.acme.domain.model.Shipment
 import com.bsstokes.acme.test.shouldEqual
 import org.junit.Test
 

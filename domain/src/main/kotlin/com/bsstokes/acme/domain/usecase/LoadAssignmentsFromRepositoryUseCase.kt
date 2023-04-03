@@ -1,10 +1,10 @@
-package com.bsstokes.acme.app.domain.usecase
+package com.bsstokes.acme.domain.usecase
 
-import com.bsstokes.acme.app.domain.algorithm.AssignmentAlgorithm
-import com.bsstokes.acme.app.domain.model.Assignment
-import com.bsstokes.acme.app.domain.repository.InputDataRepository
-import com.bsstokes.acme.app.domain.response.ErrorResponse
-import com.bsstokes.acme.app.domain.response.SimpleResponse
+import com.bsstokes.acme.domain.algorithm.AssignmentAlgorithm
+import com.bsstokes.acme.domain.model.Assignment
+import com.bsstokes.acme.domain.repository.InputDataRepository
+import com.bsstokes.acme.domain.response.ErrorResponse
+import com.bsstokes.acme.domain.response.SimpleResponse
 
 class LoadAssignmentsFromRepositoryUseCase(
     private val inputDataRepository: InputDataRepository,

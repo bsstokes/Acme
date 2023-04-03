@@ -1,13 +1,13 @@
 package com.bsstokes.acme.assignments.list
 
 import app.cash.turbine.test
-import com.bsstokes.acme.app.domain.model.Assignment
-import com.bsstokes.acme.app.domain.model.Driver
-import com.bsstokes.acme.app.domain.model.Shipment
-import com.bsstokes.acme.app.domain.response.ErrorResponse
-import com.bsstokes.acme.app.domain.response.SimpleResponse
-import com.bsstokes.acme.app.domain.response.success
-import com.bsstokes.acme.app.domain.usecase.LoadAssignmentsUseCase
+import com.bsstokes.acme.domain.model.Assignment
+import com.bsstokes.acme.domain.model.Driver
+import com.bsstokes.acme.domain.model.Shipment
+import com.bsstokes.acme.domain.response.ErrorResponse
+import com.bsstokes.acme.domain.response.SimpleResponse
+import com.bsstokes.acme.domain.response.success
+import com.bsstokes.acme.domain.usecase.LoadAssignmentsUseCase
 import com.bsstokes.acme.test.MainDispatcherRule
 import com.bsstokes.acme.test.shouldEqual
 import com.bsstokes.acme.ui.ErrorUiState
