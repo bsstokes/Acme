@@ -1,4 +1,4 @@
-package com.bsstokes.acme.app.data.repository
+package com.bsstokes.acme.data.repository
 
 import kotlinx.serialization.Serializable
 

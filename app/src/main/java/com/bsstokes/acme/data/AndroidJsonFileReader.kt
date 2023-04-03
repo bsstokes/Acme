@@ -2,7 +2,7 @@ package com.bsstokes.acme.data
 
 import android.content.Context
 import com.bsstokes.acme.R
-import com.bsstokes.acme.app.data.repository.JsonFileReader
+import com.bsstokes.acme.data.repository.JsonFileReader
 import java.io.InputStream
 
 /**
