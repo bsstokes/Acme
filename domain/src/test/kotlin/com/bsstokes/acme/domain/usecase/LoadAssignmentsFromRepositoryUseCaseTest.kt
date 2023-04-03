@@ -1,14 +1,13 @@
-package com.bsstokes.acme.app.domain.usecase
+package com.bsstokes.acme.domain.usecase
 
-import com.bsstokes.acme.app.domain.algorithm.NaiveAssignmentAlgorithm
 import com.bsstokes.acme.domain.algorithm.AssignmentAlgorithm
+import com.bsstokes.acme.domain.algorithm.NaiveAssignmentAlgorithm
 import com.bsstokes.acme.domain.model.Driver
 import com.bsstokes.acme.domain.model.InputData
 import com.bsstokes.acme.domain.model.Shipment
 import com.bsstokes.acme.domain.repository.InputDataRepository
 import com.bsstokes.acme.domain.response.ErrorResponse
 import com.bsstokes.acme.domain.response.success
-import com.bsstokes.acme.domain.usecase.LoadAssignmentsFromRepositoryUseCase
 import com.bsstokes.acme.test.shouldEqual
 import io.mockk.coVerify
 import io.mockk.spyk
