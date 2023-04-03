@@ -1,6 +1,5 @@
-package com.bsstokes.acme.app.data.repository
+package com.bsstokes.acme.data.repository
 
-import com.bsstokes.acme.data.repository.JsonFileInputDataRepository
 import com.bsstokes.acme.domain.model.Driver
 import com.bsstokes.acme.domain.model.InputData
 import com.bsstokes.acme.domain.model.Shipment
