@@ -1,4 +1,5 @@
 [versions]
+androidGradlePlugin = "8.0.0"
 composeCompiler = "1.4.4"
 composeUi = "1.4.0"
 coroutines = "1.6.4"
@@ -36,4 +37,8 @@ turbine = { module = "app.cash.turbine:turbine", version = "0.12.1" }
 kevinsternHungarianAlgorithm = { module = "com.github.kevinstern:software-and-algorithms", version = "1.0" }
 
 [plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
