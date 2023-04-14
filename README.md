@@ -6,6 +6,8 @@
 * Requirements
     * Android Studio Flamingo (2022.2.1)
     * JDK 17 (This is the version that ships with Android Studio.)
+    * For Android Studio Electric Eel, use
+      the [`pre-flamingo` tag](https://github.com/bsstokes/Acme/releases/tag/pre-flamingo).
 
 I organized my work using [issues][issues] (for high-level features) and
 [pull requests][pull_requests], which I hope helps demonstrate my thought process as I built it. Is
