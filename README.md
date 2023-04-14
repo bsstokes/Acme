@@ -3,7 +3,9 @@
 ## Project
 
 * Repository: https://github.com/bsstokes/acme
-* Requirements: Android Studio Electric Eel (2022.1.1)
+* Requirements
+    * Android Studio Flamingo (2022.2.1)
+    * JDK 17 (This is the version that ships with Android Studio.)
 
 I organized my work using [issues][issues] (for high-level features) and
 [pull requests][pull_requests], which I hope helps demonstrate my thought process as I built it. Is
